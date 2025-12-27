@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  background: #fff;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.navbar nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+}
+
+.navbar nav a.active {
+  color: #2f6df6;
+}
+
+/* Projects */
+.projects {
+  padding: 60px 40px;
+}
+
+.projects h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* Card */
+.project-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+@media (max-width:600px) {
+    .project-card img {
+        height: 180px;
+    }
+}
+.project-card h3 {
+  margin-bottom: 8px;
+}
+
+.project-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+/* Tags */
+.tags span {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 20px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.html { background: #e34c26; }
+.css { background: #264de4; }
+.js { background: #f0db4f; color: #000; }
+.react { background: #61dafb; color: #000; }
+
+/* Buttons */
+.buttons {
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #2f6df6;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.btn.outline {
+  background: transparent;
+  border: 2px solid #2f6df6;
+  color: #2f6df6;
+}
