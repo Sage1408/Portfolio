@@ -11,7 +11,7 @@
 <body>
 <input type="checkbox" id="theme-toggle" hidden>
   <!-- NAVBAR -->
-  <header class="navbar">
+  <header class="navbar reveal">
     <div class="container nav-content">
       <h2 class="logo">Ayoola Joseph</h2>
       <nav>
@@ -26,13 +26,13 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container hero-content">
-      <div class="hero-text">
+      <div class="hero-text reveal delay-1 left">
         <h1>Hi, I'm Ayoola Joseph.</h1>
         <p>I’m a Front-End Web Developer.</p>
         <a href="#projects" class="btn">View My Work</a>
       </div>
-      <div class="hero-image">
-        <img src="https://i.pinimg.com/736x/a7/4e/49/a74e4986937fc96e711406a7a381b203.jpg" alt="Sarah">
+      <div class="hero-image reveal delay-2 right">
+        <img src="https://i.pinimg.com/736x/a7/4e/49/a74e4986937fc96e711406a7a381b203.jpg" alt="...">
       </div>
     </div>
   </section>
@@ -40,24 +40,24 @@
   <!-- ABOUT -->
   <section id="about" class="section">
     <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <p class="section-desc">
+      <h2 class="section-title reveal">About Me</h2>
+      <p class="section-desc reveal">
         I am a passionate front-end developer with experience in building modern,
         responsive, and user-friendly web applications.
       </p>
 
       <div class="cards">
-        <div class="card">
+        <div class="card reveal delay-1 left">
           <i class="fa-solid fa-laptop-code"></i>
           <h3>Web Development</h3>
           <p>A brief description of the project.</p>
         </div>
-        <div class="card">
+        <div class="card reveal delay-2">
           <i class="fa-solid fa-pencil"></i>
           <h3>UI/UX Design</h3>
           <p>A brief description of the project.</p>
         </div>
-        <div class="card">
+        <div class="card reveal delay-3 right">
           <i class="fa-solid fa-bolt-lightning"></i>
           <h3>Responsive Design</h3>
           <p>A brief description of the project.</p>
@@ -69,24 +69,24 @@
   <!-- PROJECTS -->
   <section id="projects" class="section light">
     <div class="container">
-      <h2 class="section-title">My Projects</h2>
+      <h2 class="section-title reveal">My Projects</h2>
 
       <div class="projects">
-        <div class="project">
+        <div class="project reveal delay-1 left">
           <img src="https://i.pinimg.com/736x/a7/4e/49/a74e4986937fc96e711406a7a381b203.jpg" alt="Sarah">
           <h3>Project One</h3>
           <p>A brief description of the project.</p>
           <a href="#" class="btn-outline">View Project</a>
         </div>
 
-        <div class="project">
+        <div class="project reveal delay-2">
           <img src="https://i.pinimg.com/736x/a7/4e/49/a74e4986937fc96e711406a7a381b203.jpg" alt="Sarah">
           <h3>Project Two</h3>
           <p>A brief description of the project.</p>
           <a href="#" class="btn-outline">View Project</a>
         </div>
 
-        <div class="project">
+        <div class="project reveal delay-3 right">
           <img src="https://i.pinimg.com/736x/a7/4e/49/a74e4986937fc96e711406a7a381b203.jpg" alt="Sarah">
           <h3>Project Three</h3>
           <p>A brief description of the project.</p>
@@ -95,6 +95,25 @@
       </div>
     </div>
   </section>
+<script>
+  const reveals = document.querySelectorAll(".reveal");
 
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        } else {
+          entry.target.classList.remove("active");
+        }
+      });
+    },
+    {
+      threshold: 0.15
+    }
+  );
+
+  reveals.forEach(reveal => observer.observe(reveal));
+</script>
 </body>
 </html>
