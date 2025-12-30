@@ -15,10 +15,10 @@
 
         <!-- Contact Form -->
         <form  action="https://formspree.io/f/mdaorlpg" method="POST" class="contact-form">
-            <input type="text" placeholder="Name" name="Name" required>
-            <input type="email" placeholder="Email" name="Email" required>
-            <input class="full" type="text" placeholder="Subject" name="Subject" required>
-            <textarea placeholder="Message" name="Message" required></textarea>
+            <input type="text" placeholder="Name" name="name" required>
+            <input type="email" placeholder="Email" name="email" required>
+            <input class="full" type="text" placeholder="Subject" name="subject" required>
+            <textarea placeholder="Message" name="message" required></textarea>
             <button type="submit">Send</button>
         </form>
 
@@ -53,41 +53,50 @@
 
     <!-- Scripts -->
     <script>
-    const form = document.querySelector('.contact-form');
-    const success = document.querySelector('.success-message');
+const form = document.querySelector('.contact-form');
+const success = document.querySelector('.success-message');
 
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
+form.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            form.classList.add('hide');
+            setTimeout(() => {
+                form.style.display = 'none';
+                success.style.display = 'block';
+            }, 400);
+        } else {
+            alert("Form submission failed.");
         }
+    } catch (err) {
+        alert("Network error. Try again.");
+    }
+});
 
-        form.classList.add('hide');
-
-        setTimeout(() => {
-            form.style.display = 'none';
-            success.style.display = 'block';
-        }, 400);
+// reveal animation (unchanged)
+const reveals = document.querySelectorAll(".reveal");
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        entry.target.classList.toggle("active", entry.isIntersecting);
     });
+}, { threshold: 0.15 });
 
-    const reveals = document.querySelectorAll(".reveal");
+reveals.forEach(r => observer.observe(r));
+</script>
 
-    const observer = new IntersectionObserver(
-        entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("active");
-                } else {
-                    entry.target.classList.remove("active");
-                }
-            });
-        },
-        { threshold: 0.15 }
-    );
-
-    reveals.forEach(reveal => observer.observe(reveal));
-    </script>
 </body>
 </html>
