@@ -19,6 +19,7 @@
             <input type="email" placeholder="Email" name="email" required>
             <input class="full" type="text" placeholder="Subject" name="subject" required>
             <textarea placeholder="Message" name="message" required></textarea>
+            <input type="hidden" name="_replyto" value="email">
             <button type="submit">Send</button>
         </form>
 
@@ -52,11 +53,11 @@
     </div>
 
     <!-- Scripts -->
-    <script>
-const form = document.querySelector('.contact-form');
+<script>
+    const form = document.querySelector('.contact-form');
 const success = document.querySelector('.success-message');
 
-form.addEventListener('submit', async function (e) {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     if (!form.checkValidity()) {
@@ -80,23 +81,23 @@ form.addEventListener('submit', async function (e) {
                 success.style.display = 'block';
             }, 400);
         } else {
-            alert("Form submission failed.");
+            alert("Form submission failed. Try again.");
         }
     } catch (err) {
         alert("Network error. Try again.");
     }
 });
 
-// reveal animation (unchanged)
+// Reveal animations (unchanged)
 const reveals = document.querySelectorAll(".reveal");
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         entry.target.classList.toggle("active", entry.isIntersecting);
     });
 }, { threshold: 0.15 });
-
 reveals.forEach(r => observer.observe(r));
 </script>
+
 
 </body>
 </html>
